@@ -1,0 +1,98 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite para um Date</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ff6b6b;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #ff6b6b;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e74c3c;
+        }
+
+        #resposta {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        #gato-feliz {
+            display: none;
+        }
+
+        #gato-triste {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>🌟 Convite para um Date 🌟</h1>
+    <p>Olá! Você é como uma tag <strong>strong</strong>... forte e impactante! 😄</p>
+    <p>Gostaria de sair comigo? Vamos criar nossa própria página de juntinhos! hehe 💕</p>
+    <button onclick="aceitarEncontro()">Sim, vamos!</button>
+    <button onclick="recusarEncontro()">Não, obrigado(a)</button>
+    <p id="resposta"></p>
+    <img id="gato-feliz" src="https://media.tenor.com/lCKwsD2OW1kAAAAj/happy-cat-happy-happy-cat.gif" alt="Gato feliz">
+    <img id="gato-triste" src="https://i.pinimg.com/originals/19/11/66/191166b7c7813e846b70b41fdf6e268d.gif" alt="Gato triste">
+
+    <script>
+        function aceitarEncontro() {
+            
+//cookie
+document.cookie = "resposta=aceito; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+
+document.getElementById("resposta").innerText = "🎉🥂 Aceita?!? Mal posso esperar para nossa saidinha! 😭";
+            // Exibir gato feliz
+            document.getElementById("gato-feliz").style.display = "block";
+            document.getElementById("gato-triste").style.display = "none";
+        }
+
+ 
+
+        function recusarEncontro() {
+            
+//cookie
+document.cookie = "resposta=recusado; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+        
+
+document.getElementById("resposta").innerText = "😢 Tudo bem, talvez em outra ocasião! 🙃";
+            // Exibir gato triste
+            document.getElementById("gato-feliz").style.display = "none";
+            document.getElementById("gato-triste").style.display = "block";
+        }
+
+  // Verificar se há um cookie com a resposta
+        const respostaCookie = document.cookie.split(";").find(cookie => cookie.trim().startsWith("resposta="));
+        if (respostaCookie) {
+            const resposta = respostaCookie.split("=")[1];
+            document.getElementById("resposta").innerText = resposta === "aceito" ? "🎉🥂 Foi Aceito!" : "😢 Tudo bem, não era para ser🙃";
+        }
+    </script>
+</body>
+</html>
